@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbagdon <cbagdon@student.42.us.org>        +#+  +:+       +#+        */
+/*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:58:47 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/24 10:52:33 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/28 16:58:59 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,4 +153,5 @@ char				*ft_strndup(const char *src, int n);
 char				*ft_stroverlap(char *dst, const char *src);
 void				ft_strmove(char *dst, const char *src);
 void				ft_strrev(char *str);
+int					ft_starts_with(char *to_start, char *str);
 #endif
