@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+         #
+#    By: cbagdon <cbagdon@student.42.us.org>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/26 17:43:18 by cbagdon           #+#    #+#              #
-#    Updated: 2019/03/28 19:34:13 by cbagdon          ###   ########.fr        #
+#    Updated: 2019/03/29 22:26:10 by cbagdon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC = main.c \
 		exec.c \
 		parse.c
 
-BUILTIN = cd.c
+BUILTIN = cd.c \
+		env_b.c
 
 INCLUDES = includes/
 

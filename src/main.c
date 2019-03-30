@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cbagdon <cbagdon@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:46:13 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/28 19:42:16 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/29 21:54:21 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ int		main(int argc, char *argv[], char *env[])
 		//is system command? run system command
 		//is folder/executable? chdir folder, run executable
 		//error
-		exec_command(command);
+		if (exec_command(command) == -1)
+		{
+			free(line);
+			break ;
+		}
 		free(line);
 	}
 	free_env();

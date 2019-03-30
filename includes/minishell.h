@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cbagdon <cbagdon@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:45:15 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/28 19:38:11 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/29 22:20:51 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int				exec_command(char **command);
 **	BUILT-INS
 */
 
+int				env_b(void);
 void			cd_b(char **command, int print);
 
 #endif
