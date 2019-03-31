@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbagdon <cbagdon@student.42.us.org>        +#+  +:+       +#+        */
+/*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:45:15 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/29 22:20:51 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/30 16:16:19 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ void			init_env(char *env[]);
 void			display_prompt(void);
 void			free_env(void);
 int				exec_command(char **command);
+int				env_len(char *env[]);
 
 /*
 **	BUILT-INS
 */
 
 int				env_b(void);
-void			cd_b(char **command, int print);
+int				cd_b(char **command, int print);
+int				setenv_b(char **command);
 
 #endif

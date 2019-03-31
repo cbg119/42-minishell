@@ -3,17 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbagdon <cbagdon@student.42.us.org>        +#+  +:+       +#+        */
+/*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:46:13 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/29 21:54:21 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/30 17:17:48 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+static void		cleanup(char **command, char *line)
+{
+	int		i;
+
+	i = 0;
+	if (!command)
+		return ;
+	while (command[i])
+	{
+		free(command[i]);
+		i++;
+	}
+	if (line)
+		free(line);
+	free(command);
+}
+
 int		main(int argc, char *argv[], char *env[])
 {
+	int		ret;
 	char	*line;
 	char	**command;
 
@@ -30,12 +48,12 @@ int		main(int argc, char *argv[], char *env[])
 		//is system command? run system command
 		//is folder/executable? chdir folder, run executable
 		//error
-		if (exec_command(command) == -1)
-		{
-			free(line);
+		ret = exec_command(command);
+		ft_printf("%d\n\n", ret);
+		cleanup(command, line);
+		if (ret == -1)
 			break ;
-		}
-		free(line);
 	}
 	free_env();
+	return (0);
 }

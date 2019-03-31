@@ -6,13 +6,13 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 22:38:43 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/27 23:32:50 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/30 16:41:54 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int		env_len(char *env[])
+int				env_len(char *env[])
 {
 	int		i;
 
@@ -27,10 +27,10 @@ void			init_env(char *env[])
 	int		len;
 
 	len = env_len(env);
-	g_env = (char **)malloc(sizeof(char *) * len + 1);
+	g_env = (char **)malloc(sizeof(char *) * (len + 1));
 	if (g_env)
 	{
-		g_env[len--] = 0;
+		g_env[len--] = NULL;
 		while (len >= 0)
 		{
 			g_env[len] = ft_strdup(env[len]);
