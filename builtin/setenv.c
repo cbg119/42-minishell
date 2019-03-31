@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 14:34:25 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/30 18:10:51 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/31 12:01:10 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void		new_env_var(char *key, char *value)
 **	key:value pair in g_env
 */
 
-static int		set_env_var(char *key, char *value)
+int				set_env_var(char *key, char *value)
 {
 	int		i;
 	char	*key_temp;
