@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:46:13 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/30 17:17:48 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/31 13:12:37 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ static void		cleanup(char **command, char *line)
 int		main(int argc, char *argv[], char *env[])
 {
 	int		ret;
+	int		lvl;
 	char	*line;
 	char	**command;
 
 	(void)argc;
 	(void)argv;
 	init_env(env);
+	lvl = ft_atoi(get_env("SHLVL")) + 1;
+	set_env_var("SHLVL", ft_itoa(lvl));
 	while (1)
 	{
 		display_prompt();
@@ -49,7 +52,7 @@ int		main(int argc, char *argv[], char *env[])
 		//is folder/executable? chdir folder, run executable
 		//error
 		ret = exec_command(command);
-		ft_printf("%d\n\n", ret);
+		//ft_printf("%d\n\n", ret);
 		cleanup(command, line);
 		if (ret == -1)
 			break ;

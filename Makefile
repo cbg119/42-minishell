@@ -6,7 +6,7 @@
 #    By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/26 17:43:18 by cbagdon           #+#    #+#              #
-#    Updated: 2019/03/30 18:12:51 by cbagdon          ###   ########.fr        #
+#    Updated: 2019/03/31 13:08:39 by cbagdon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC = main.c \
 BUILTIN = cd.c \
 		env_b.c \
 		setenv.c \
-		unsetenv.c
+		unsetenv.c \
+		echo.c
 
 INCLUDES = includes/
 
