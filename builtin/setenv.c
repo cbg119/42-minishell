@@ -6,20 +6,11 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 14:34:25 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/30 16:50:27 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/30 18:10:51 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-
-/*
-**	TODO:
-**	Implement setenv
-**		take input for KEY and VALUE
-**		if KEY already exists, store into temp, free, realloc with new value
-**		ELSE we alloc new temp_genv. We iterate - IF item != key, duplicate.
-**		ELSE item == key, we allocate space for new string then store.
-*/
 
 /*
 **	find_env_index(char *key)
@@ -48,6 +39,14 @@ static int		find_env_index(char *key)
 	return (-1);
 }
 
+/*
+**	new_env_var(char *key, char *value)
+**
+**	OBJECTIVE: Allocate new environmental variable array, copy over existing
+**	contents, then add new key:value pair. Then free g_env and assign
+**	it to new array
+*/
+
 static void		new_env_var(char *key, char *value)
 {
 	int		i;
@@ -75,6 +74,14 @@ static void		new_env_var(char *key, char *value)
 	g_env = new_env;
 }
 
+
+/*
+**	set_env_var(char *key, char *value)
+**
+**	OBJECTIVE: If key:value pair exists, free, alloc, and set new
+**	key:value pair in g_env
+*/
+
 static int		set_env_var(char *key, char *value)
 {
 	int		i;
@@ -94,14 +101,18 @@ static int		set_env_var(char *key, char *value)
 	}
 	else if (i == -1)
 		new_env_var(key, value);
-	return (1);
+	return (0);
 }
+
+/*
+**	Just a wrapper function for set_env_var
+*/
 
 int				setenv_b(char **command)
 {
 	if (!command[1])
 		ft_printf("setenv: too few arguments\n");
-	else if (command[2] && command[3])
+	else if (command[1] && command[2] && command[3])
 		ft_printf("setenv: too many arguments\n");
 	else
 	{

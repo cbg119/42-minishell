@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:43:41 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/30 15:49:23 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/30 18:12:43 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int is_builtin(char *cmd)
 	if (ft_strcmp("cd", cmd) == 0 ||
 	ft_strcmp("exit", cmd) == 0 ||
 	ft_strcmp("env", cmd) == 0 ||
-	ft_strcmp("setenv", cmd) == 0)
+	ft_strcmp("setenv", cmd) == 0 ||
+	ft_strcmp("unsetenv", cmd) == 0)
 		return (1);
 	return (0);
 }
@@ -37,6 +38,8 @@ static int	exec_builtin(char **command)
 		return (-1);
 	else if (ft_strcmp("setenv", command[0]) == 0)
 		return (setenv_b(command));
+	else if (ft_strcmp("unsetenv", command[0]) == 0)
+		return (unsetenv_b(command));
 	return (1);
 }
 

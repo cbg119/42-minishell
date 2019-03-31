@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 22:38:43 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/30 16:41:54 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/30 18:30:44 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,9 @@ void			free_env(void)
 	int		i;
 
 	i = 0;
-	if (g_env)
-	{
-		while (g_env[i])
-			free(g_env[i++]);
-		free(g_env);
-	}
+	while (g_env[i])
+		free(g_env[i++]);
+	free(g_env);
 }
 
 char			*get_env(char *env_var)

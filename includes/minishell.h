@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:45:15 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/30 16:16:19 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/03/30 18:11:58 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ int				env_len(char *env[]);
 int				env_b(void);
 int				cd_b(char **command, int print);
 int				setenv_b(char **command);
+int				unsetenv_b(char **command);
 
 #endif
