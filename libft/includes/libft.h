@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:58:47 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/28 16:58:59 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/01 13:35:00 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,4 +154,8 @@ char				*ft_stroverlap(char *dst, const char *src);
 void				ft_strmove(char *dst, const char *src);
 void				ft_strrev(char *str);
 int					ft_starts_with(char *to_start, char *str);
+char				*ft_strjoinch(char *s1, char c);
+char				*ft_strjoinchf(char *str, char c);
+char				*ft_strjoinf(char *s1, char *s2);
+
 #endif
