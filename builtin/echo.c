@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 13:05:55 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/31 14:02:03 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/02 17:08:23 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void		echo_command(char **str, int index)
 	int		start_quote;
 	int		end_quote;
 
-
 	while (str[index])
 	{
 		len = ft_strlen(str[index]);
@@ -49,7 +48,7 @@ static void		echo_command(char **str, int index)
 	}
 }
 
-int		echo_b(char **command)
+int				echo_b(char **command)
 {
 	int		i;
 	int		n_flag;

@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 14:34:25 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/31 12:01:10 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/02 17:09:05 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static void		new_env_var(char *key, char *value)
 	free(new_var);
 	g_env = new_env;
 }
-
 
 /*
 **	set_env_var(char *key, char *value)

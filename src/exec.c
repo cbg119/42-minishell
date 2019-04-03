@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:43:41 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/31 13:08:28 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/02 17:16:56 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,25 @@
 **	as a dispatch table for cleaner code. I'll implement it later.
 */
 
-static int is_builtin(char *cmd)
+int				exec_path(char *ex_path, char **command)
+{
+	pid_t	pid;
+
+	pid = fork();
+	if (pid == 0)
+		execve(ex_path, command, g_env);
+	else if (pid < 0)
+	{
+		ft_printf("minishell: fork: process creation failed!\n");
+		free(ex_path);
+		return (1);
+	}
+	free(ex_path);
+	wait(&pid);
+	return (0);
+}
+
+static int		is_builtin(char *cmd)
 {
 	if (ft_strcmp("cd", cmd) == 0 ||
 	ft_strcmp("exit", cmd) == 0 ||
@@ -29,12 +47,12 @@ static int is_builtin(char *cmd)
 	return (0);
 }
 
-static int	exec_builtin(char **command)
+static int		exec_builtin(char **command)
 {
 	if (ft_strcmp("cd", command[0]) == 0)
-		return(cd_b(command, 0));
+		return (cd_b(command, 0));
 	else if (ft_strcmp("env", command[0]) == 0)
-		return(env_b());
+		return (env_b());
 	else if (ft_strcmp("exit", command[0]) == 0)
 		return (-1);
 	else if (ft_strcmp("setenv", command[0]) == 0)
@@ -46,15 +64,23 @@ static int	exec_builtin(char **command)
 	return (1);
 }
 
-int			exec_command(char **command)
+int				exec_command(char **command)
 {
+	char			*path;
+	struct stat		info;
+
 	if (!command || !*command)
 		return (1);
 	if (is_builtin(command[0]))
 		return (exec_builtin(command));
+	else if ((path = in_path(command)))
+	{
+		lstat(path, &info);
+		return (is_executable(command, path, info));
+	}
 	else
 	{
-		ft_printf("minishell: command not found: %s\n", command[0]);
+		ft_printf("minishell: %s: command not found\n", command[0]);
 	}
 	return (1);
 }

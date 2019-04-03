@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:45:15 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/31 13:07:25 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/02 17:07:35 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 **	INCLUDES
 */
 
-#include "../libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
@@ -59,5 +59,8 @@ int				set_env_var(char *key, char *value);
 int				setenv_b(char **command);
 int				unsetenv_b(char **command);
 int				echo_b(char **command);
+int				exec_path(char *ex_path, char **command);
+char			*in_path(char **command);
+int				is_executable(char **command, char *bin, struct stat info);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:21:24 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/31 12:08:08 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/02 17:08:38 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int				cd_b(char **command, int print)
 	{
 		if (check_cd_error(command))
 			return (1);
-		return(change_dir(command[1], print));
+		return (change_dir(command[1], print));
 	}
 }

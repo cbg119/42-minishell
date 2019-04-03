@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:58:47 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/04/01 13:35:00 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/02 16:37:06 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,7 @@ int					ft_starts_with(char *to_start, char *str);
 char				*ft_strjoinch(char *s1, char c);
 char				*ft_strjoinchf(char *str, char c);
 char				*ft_strjoinf(char *s1, char *s2);
+char				*ft_pathjoin(char *s1, char *s2);
+void				ft_freestrarray(char **str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:46:13 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/04/01 12:45:33 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/02 17:13:56 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void		cleanup(char **command, char *line)
 	free(command);
 }
 
-int		main(int argc, char *argv[], char *env[])
+int				main(int argc, char *argv[], char *env[])
 {
 	int		ret;
 	char	*line;
@@ -43,10 +43,6 @@ int		main(int argc, char *argv[], char *env[])
 		get_next_line(1, &line);
 		command = ft_strsplit(line, ' ');
 		parse_input(command);
-		//is builtin? exec builtin.
-		//is system command? run system command
-		//is folder/executable? chdir folder, run executable
-		//error
 		ret = exec_command(command);
 		cleanup(command, line);
 		if (ret == -1)
