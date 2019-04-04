@@ -6,48 +6,78 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:46:13 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/04/02 17:13:56 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/03 23:14:30 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void		cleanup(char **command, char *line)
+static int		exec_commands(char **commands)
 {
 	int		i;
+	int		ret;
+	char	**command;
 
-	if (!command)
-		return ;
 	i = 0;
-	while (command[i])
-		free(command[i++]);
-	free(line);
-	free(command);
+	while (commands[i])
+	{
+		command = ft_strsplit(commands[i], ' ');
+		parse_input(command);
+		ret = exec_command(command);
+		ft_freestrarray(command);
+		if (ret == -1)
+			return (-1);
+		i++;
+	}
+	return (0);
 }
+
+/*
+**	This function increments the $SHLVL variable. Also voids argc and argv so that
+**	I don't have to, just so I can save lines. Thanks norminette.
+*/
+
+static void		set_sh_level(int argc, char *argv[])
+{
+	char	*level;
+
+	(void)argc;
+	(void)argv;
+	level = ft_itoa(ft_atoi(get_env("SHLVL")) + 1);
+	set_env_var("SHLVL", level);
+	free(level);
+}
+
+/*
+**	While I use readline() for the bonuses like history and line editing,
+**	I can just as easily display my own prompt as well as use my get next line
+**	for input.
+*/
 
 int				main(int argc, char *argv[], char *env[])
 {
 	int		ret;
 	char	*line;
-	char	**command;
+	char	*prompt;
+	char	**commands;
 
-	(void)argc;
-	(void)argv;
 	init_env(env);
-	line = ft_itoa(ft_atoi(get_env("SHLVL")) + 1);
-	set_env_var("SHLVL", line);
-	free(line);
+	set_sh_level(argc, argv);
 	while (1)
 	{
-		display_prompt();
-		get_next_line(1, &line);
-		command = ft_strsplit(line, ' ');
-		parse_input(command);
-		ret = exec_command(command);
-		cleanup(command, line);
+		prompt = get_handled_path();
+		ft_printf(C_BLUE);
+		line = readline(prompt);
+		ft_printf(C_WHITE);
+		free(prompt);
+		add_history(line);
+		commands = ft_strsplit(line, ';');
+		free(line);
+		ret = exec_commands(commands);
+		ft_freestrarray(commands);
 		if (ret == -1)
 			break ;
 	}
-	free_env();
+	ft_freestrarray(g_env);
 	return (0);
 }

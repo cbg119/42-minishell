@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 22:38:43 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/30 18:30:44 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/03 13:43:34 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,6 @@ void			init_env(char *env[])
 			len--;
 		}
 	}
-}
-
-void			free_env(void)
-{
-	int		i;
-
-	i = 0;
-	while (g_env[i])
-		free(g_env[i++]);
-	free(g_env);
 }
 
 char			*get_env(char *env_var)

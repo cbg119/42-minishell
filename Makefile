@@ -6,7 +6,7 @@
 #    By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/26 17:43:18 by cbagdon           #+#    #+#              #
-#    Updated: 2019/04/02 17:06:42 by cbagdon          ###   ########.fr        #
+#    Updated: 2019/04/03 12:42:29 by cbagdon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ all: $(NAME)
 $(NAME):
 	make -C libft
 	@gcc $(FLAGS) -I $(INCLUDES) -c $(addprefix src/,$(SRC)) $(addprefix builtin/,$(BUILTIN))
-	@gcc $(Flags) -o $(NAME) $(OBJECTS) -L ./libft/ -lft
+	@gcc $(Flags) -o $(NAME) $(OBJECTS) -L ./libft/ -lft -lreadline
 
 clean:
 	make -C libft clean

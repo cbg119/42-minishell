@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:43:41 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/04/02 17:16:56 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/03 22:59:40 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,13 @@ int				exec_command(char **command)
 		lstat(path, &info);
 		return (is_executable(command, path, info));
 	}
-	else
+	if (lstat(command[0], &info) != -1)
 	{
-		ft_printf("minishell: %s: command not found\n", command[0]);
+		if (S_ISREG(info.st_mode) && (info.st_mode & S_IXUSR))
+			return (is_executable(command, ft_strdup(command[0]), info));
+		else if (S_ISDIR(info.st_mode))
+			return (change_dir(command[0], 0));
 	}
+	ft_printf("minishell: command not found: %s\n", command[0]);
 	return (1);
 }

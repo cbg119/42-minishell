@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 18:02:38 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/03/30 18:51:57 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/03 13:52:28 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		unset_env_var(char *key)
 		j++;
 	}
 	free(key_temp);
-	free_env();
+	ft_freestrarray(g_env);
 	g_env = new_env;
 	return (0);
 }

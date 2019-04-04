@@ -6,13 +6,13 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:21:24 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/04/02 17:08:38 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/03 23:07:15 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static int		change_dir(char *path, int print)
+int				change_dir(char *path, int print)
 {
 	char	cwd_path[PATH_MAX + 1];
 
@@ -48,7 +48,8 @@ static int		check_cd_error(char **command)
 
 int				cd_b(char **command, int print)
 {
-	if (!command[1] || ft_strequ(command[1], "--"))
+	if ((!command[1] && ft_strequ("cd", command[0])) ||
+	ft_strequ(command[1], "--"))
 		return (change_dir(get_env("HOME"), 0));
 	else if (ft_strequ(command[1], "-"))
 		return (change_dir(get_env("OLDPWD"), 1));
