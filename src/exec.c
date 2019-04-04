@@ -6,7 +6,7 @@
 /*   By: cbagdon <cbagdon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:43:41 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/04/03 22:59:40 by cbagdon          ###   ########.fr       */
+/*   Updated: 2019/04/03 23:23:50 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int				exec_command(char **command)
 	}
 	if (lstat(command[0], &info) != -1)
 	{
-		if (S_ISREG(info.st_mode) && (info.st_mode & S_IXUSR))
+		if (S_ISREG(info.st_mode))
 			return (is_executable(command, ft_strdup(command[0]), info));
 		else if (S_ISDIR(info.st_mode))
 			return (change_dir(command[0], 0));
